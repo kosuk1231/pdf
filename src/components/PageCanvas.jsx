@@ -38,7 +38,6 @@ function EditBox({ box, editing, onStart, onCommit, onCancel }) {
         fontSize: box.fontSize,
         lineHeight: `${box.height}px`,
         color: showInk ? 'var(--ink)' : 'transparent',
-        background: showInk && !editing ? '#fff' : undefined,
       }}
       contentEditable={editing}
       suppressContentEditableWarning
@@ -237,6 +236,20 @@ export default function PageCanvas({ page, source, mode, onEdits }) {
         <canvas ref={canvasRef} />
         {editable && (
           <div className={'edit-layer' + (mode === 'text' ? '' : ' readonly')}>
+            {boxes.map((b) =>
+              b.kind === 'existing' && (b.edited || editingId === b.idKey) ? (
+                <div
+                  key={'cov_' + b.idKey}
+                  className="edit-cover"
+                  style={{
+                    left: b.left - 2,
+                    top: b.top - b.fontSize * 0.14,
+                    width: b.width + 4,
+                    height: b.fontSize * 1.42,
+                  }}
+                />
+              ) : null
+            )}
             {boxes.map((b) => (
               <EditBox
                 key={b.idKey}

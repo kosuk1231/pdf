@@ -110,10 +110,10 @@ export async function exportPdf(sources, pages) {
       if (e.whiteout) {
         const bg = e.bg || [1, 1, 1]
         page.drawRectangle({
-          x: e.x - 1,
-          y: e.baseline - size * 0.28,
-          width: (e.width || size * (e.text?.length || 1) * 0.6) + 2,
-          height: size * 1.32,
+          x: e.x - 1.5,
+          y: e.baseline - size * 0.34,
+          width: (e.width || size * (e.text?.length || 1) * 0.6) + 3,
+          height: size * 1.44,
           color: rgb(bg[0], bg[1], bg[2]),
         })
       }

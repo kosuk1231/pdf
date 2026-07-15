@@ -255,8 +255,16 @@ button {
 /* text-edit overlay */
 .edit-layer { position: absolute; inset: 0; }
 .edit-layer.readonly { pointer-events: none; }
+.edit-cover {
+  position: absolute;
+  background: #fff;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 1px;
+}
 .edit-box {
   position: absolute;
+  z-index: 2;
   outline: 1px dashed transparent;
   color: transparent;
   caret-color: var(--signal);
